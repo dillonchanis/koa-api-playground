@@ -1,5 +1,8 @@
+const env = require('dotenv')
 const path = require('path')
 const BASE_PATH = path.join(__dirname, 'src', 'server', 'db')
+
+env.config()
 
 module.exports = {
   test: {
