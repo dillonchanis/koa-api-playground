@@ -23,6 +23,7 @@
   "dependencies": {
     "knex": "0.13.0",
     "koa": "2.3.0",
+    "koa-router": "7.2.1",
     "mysql": "2.15.0"
   }
 }
