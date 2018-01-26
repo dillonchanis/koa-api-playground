@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon --exec babel-node src/server/index.js",
     "start": "node ./src/server/index.js",
-    "test": "babel-node ./node_modules/mocha/bin/_mocha"
+    "test": "babel-node ./node_modules/mocha/bin/_mocha",
+    "seed:dev": "knex migrate:latest --env development && knex seed:run --env development"
   },
   "keywords": [],
   "author": "Dillon Chanis <dillonchanis92@gmail.com> (http://dillonchanis.com/)",
