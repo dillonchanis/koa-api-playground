@@ -38,4 +38,81 @@ router.get(`${BASE_URL}/:id`, async (context) => {
   }
 })
 
+router.post(`${BASE_URL}`, async (context) => {
+  try {
+    const book = await queries.addBook(context.request.body)
+
+    if (book.length) {
+      context.status = 201
+      context.body = {
+        status: 'success',
+        data: book
+      }
+    } else {
+      context.status = 400
+      context.body = {
+        status: 'error',
+        message: 'Something went wrong'
+      }
+    }
+
+  } catch (err) {
+    context.status = 400
+    context.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+router.put(`${BASE_URL}/:id`, async (context) => {
+  try {
+    const book = await queries.updateBook(context.params.id, context.request.body)
+    if (book.length) {
+      context.status = 201
+      context.body = {
+        status: 'success',
+        data: book
+      }
+    } else {
+      context.status = 404
+      context.body = {
+        status: 'error',
+        message: 'That book does not exist.'
+      }
+    }
+  } catch (err) {
+    context.status = 400
+    context.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+router.delete(`${BASE_URL}/:id`, async (context) => {
+  try {
+    const book = await queries.deleteBook(context.params.id)
+    if (book.length) {
+      context.status = 200
+      context.body = {
+        status: 'success',
+        data: book
+      }
+    } else {
+      context.status = 404
+      context.body = {
+        status: 'error',
+        message: 'That book does not exist.'
+      }
+    }
+  } catch (err) {
+    context.status = 400
+    context.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
 export default router
