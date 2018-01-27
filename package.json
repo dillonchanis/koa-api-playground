@@ -7,7 +7,8 @@
     "dev": "nodemon --exec babel-node src/server/index.js",
     "start": "node ./src/server/index.js",
     "test": "babel-node ./node_modules/mocha/bin/_mocha",
-    "seed:dev": "knex migrate:latest --env development && knex seed:run --env development"
+    "seed:dev": "knex migrate:latest --env development && knex seed:run --env development",
+    "seed:test": "knex migrate:latest --env test && knex seed:run --env test"
   },
   "keywords": [],
   "author": "Dillon Chanis <dillonchanis92@gmail.com> (http://dillonchanis.com/)",
@@ -24,6 +25,7 @@
   "dependencies": {
     "knex": "0.13.0",
     "koa": "2.3.0",
+    "koa-bodyparser": "4.2.0",
     "koa-router": "7.2.1",
     "mysql": "2.15.0"
   }
